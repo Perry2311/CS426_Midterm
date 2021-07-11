@@ -2,9 +2,11 @@ package com.example.weatherforecast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
             search = (ImageView) findViewById(R.id.search);
 
             // CALL ALL ANSWERS :
-
             city = (TextView) findViewById(R.id.city);
             country = (TextView) findViewById(R.id.country);
             time = (TextView) findViewById(R.id.time);
@@ -50,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             windSpeed = (TextView) findViewById(R.id.wind_speed);
 
             // CLICK ON SEARCH BUTTON :
-
             search.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -76,15 +76,12 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-
             try {
                 JSONObject jsonObj = new JSONObject(result);
                 JSONObject main = jsonObj.getJSONObject("main");
                 JSONObject weather = jsonObj.getJSONArray("weather").getJSONObject(0);
                 JSONObject wind = jsonObj.getJSONObject("wind");
                 JSONObject sys = jsonObj.getJSONObject("sys");
-
-
 
                 // CALL VALUE IN API :
                 String city_name = jsonObj.getString("name");
@@ -103,27 +100,21 @@ public class MainActivity extends AppCompatActivity {
                 Long set = sys.getLong("sunset");
                 String sunset = new SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(new Date(set * 1000));
 
-
-
-
-
-
                 // SET ALL VALUES IN TEXTBOX :
                 city.setText(city_name);
                 country.setText(countryname);
                 time.setText(updatedAtText);
                 temp.setText(temperature + "°C");
                 forecast.setText(cast);
-                humidity.setText(humi_dity);
-                min_temp.setText(temp_min);
-                max_temp.setText(temp_max);
+                humidity.setText(humi_dity + "%");
+                min_temp.setText(temp_min + "°C");
+                max_temp.setText(temp_max + "°C");
                 sunrises.setText(sunrise);
                 sunsets.setText(sunset);
-                pressure.setText(pre);
-                windSpeed.setText(windspeed);
-
-            } catch (Exception e) {
-
+                pressure.setText(pre + "Hg");
+                windSpeed.setText(windspeed + "km/h");
+            }
+            catch (Exception e) {
                 Toast.makeText(MainActivity.this, "Error:" + e.toString(), Toast.LENGTH_SHORT).show();
             }
         }

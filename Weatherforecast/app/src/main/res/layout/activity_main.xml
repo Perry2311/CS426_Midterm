@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:textAllCaps="true"
                 android:layout_gravity="center_horizontal"
-                android:textColor="@color/text2"
+                android:textColor="@color/text3"
                 android:textSize="16sp"
                 android:includeFontPadding="false" />
 
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/text2"
+                android:textColor="@color/text3"
                 android:textSize="40sp"
                 android:includeFontPadding="false"
                 android:layout_gravity="center_horizontal"
@@ -80,7 +80,7 @@
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text2"
+                android:textColor="@color/text3"
                 android:layout_marginTop="40dp"
                 android:textSize="13sp"
                 android:layout_gravity="center_horizontal"
@@ -120,7 +120,7 @@
                     android:includeFontPadding="false"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:textColor="@color/text2"
+                    android:textColor="@color/text1"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -146,7 +146,7 @@
                     android:text="--"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:textColor="@color/text2"
+                    android:textColor="@color/text1"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -165,8 +165,8 @@
                 android:id="@+id/city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text3"
-                android:textSize="18sp"
+                android:textColor="@color/text1"
+                android:textSize="25sp"
                 android:includeFontPadding="false"
                 android:textStyle="bold" />
 
@@ -175,14 +175,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text1"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:layout_marginTop="8dp"
                 android:includeFontPadding="false" />
 
         </LinearLayout>
 
         <View
-            android:layout_width="300dp"
+            android:layout_width="150dp"
             android:layout_height="1dp"
             android:background="@color/colorPrimaryDark"
             android:layout_marginTop="15dp"
@@ -215,9 +215,9 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/hum"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="38dp" />
+                    android:layout_marginStart="58dp"
+                    android:src="@drawable/hum" />
 
                 <TextView
                     android:id="@+id/humidity"
@@ -256,7 +256,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/pressure"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="38dp" />
+                    android:layout_marginStart="58dp" />
 
                 <TextView
                     android:id="@+id/pressure"
@@ -295,7 +295,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/wind"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="38dp" />
+                    android:layout_marginStart="58dp" />
 
                 <TextView
                     android:id="@+id/wind_speed"
@@ -331,7 +331,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/tem_down"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="38dp" />
+                    android:layout_marginStart="58dp" />
 
                 <TextView
                     android:id="@+id/min_temp"
@@ -368,7 +368,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/tem_up"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="38dp" />
+                    android:layout_marginStart="58dp" />
 
                 <TextView
                     android:id="@+id/max_temp"
