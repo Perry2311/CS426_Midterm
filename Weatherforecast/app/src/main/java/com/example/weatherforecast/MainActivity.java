@@ -27,12 +27,11 @@ public class MainActivity extends AppCompatActivity {
     ImageView search;
     EditText etCity;
     TextView city,country,time,temp,forecast,humidity,min_temp,max_temp,sunrises,sunsets,pressure,windSpeed;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        {
             etCity = (EditText) findViewById(R.id.Your_city);
             search = (ImageView) findViewById(R.id.search);
 
@@ -49,13 +48,17 @@ public class MainActivity extends AppCompatActivity {
             sunsets = (TextView) findViewById(R.id.sunsets);
             pressure = (TextView) findViewById(R.id.pressure);
             windSpeed = (TextView) findViewById(R.id.wind_speed);
-
+        if(CITY.equals("")) {
+                CITY="SAIGON";
+                new weatherTask().execute();
+            }
             // CLICK ON SEARCH BUTTON :
             search.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     CITY = etCity.getText().toString();
-                    new weatherTask().execute();
+                        new weatherTask().execute();
+                    }
                 }
             });
         }
