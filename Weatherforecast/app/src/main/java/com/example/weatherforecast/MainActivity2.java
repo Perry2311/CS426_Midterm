@@ -55,7 +55,38 @@ public class MainActivity2 extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("Result", "Json: " + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONObject jsonObjectCity = jsonObject.getJSONObject("city");
+                            String name = jsonObjectCity.getString("name");
+                            txtName.setText(name);
+
+                            JSONArray jsonArrayList = jsonObject.getJSONArray("list");
+                            for(int i =0 ;i<jsonArrayList.length();i++){
+                                JSONObject jsonObjectList = jsonArrayList.getJSONObject(i);
+                                String day = jsonObjectList.getString("dt");
+                                long l = Long.valueOf(day);
+                                Date date = new Date(1*1000L);
+                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
+                                String Day= simpleDateFormat.format(date);
+                                JSONObject jsonObjectTemp = jsonObjectList.getJSONObject("temp");
+                                String max = jsonObjectTemp.getString("max");
+                                String min = jsonObjectTemp.getString("min");
+                                Double a =Double.valueOf(max);
+                                Double b =Double.valueOf(min);
+                                String tempMax = String.valueOf(a.intValue());
+                                String tempMin = String.valueOf(b.intValue());
+                                JSONArray jsonArrayWeather = jsonObjectList.getJSONArray("weather");
+                                JSONObject jsonObjectWeather = jsonArrayWeather.getJSONObject(0);
+                                String status = jsonObjectWeather.getString("description");
+                                String icon = jsonObjectWeather.getString("icon");
+                                weatherArrayList.add(new Weather(day,status,icon,tempMax,tempMin));
+
+                            }
+                            customAdapter.notifyDataSetChanged();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -66,3 +97,4 @@ public class MainActivity2 extends AppCompatActivity {
                 });
         requestQueue.add(stringRequest);
     }
+}
